@@ -1,8 +1,39 @@
-#Requirements
+# C++ Code Lab
+
+Interactive C++ learning platform with built-in IDE, test runner, and AI teacher.
+
+## Requirements
+
 Server must install g++
-```
+```bash
 sudo apt install g++
 ```
+
+## Environment Setup
+
+1. Copy the example environment file:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Configure required variables in `.env`:
+   ```env
+   # Required
+   GENAI_API_KEY=your_genai_api_key_here
+
+   # Optional (has defaults)
+   LOG_INTAKE_URL=https://digitech-sandbox.sut.ac.th/c-playground/api/log-intake
+   ```
+
+3. For **external log-intake server** only (not needed for K8s pods):
+   ```env
+   POSTGRES_URL=postgresql://username:password@host:5432/database
+   ```
+
+## Documentation
+
+- [LOGGING.md](./LOGGING.md) - Logging system and analytics
+- [DATABASE.md](./DATABASE.md) - Database schema and setup
 
 # sv
 
