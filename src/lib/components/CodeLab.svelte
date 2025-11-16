@@ -33,6 +33,34 @@
     let pendingQuestion = "";
     let aiThinking = false;
 
+    let checkResults = [];
+    let solved = false;
+    let isChecking = false;
+
+    async function checkSolution() {
+        isChecking = true;
+        solved = false;
+        checkResults = [];
+
+        const code = editor.getValue();
+
+        const res = await fetch("/api/check-solution", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                code,
+                tests: problem.tests,
+                labId: lab.id,
+                problemId: problem.id,
+            }),
+        });
+
+        const data = await res.json();
+        isChecking = false;
+        checkResults = data.results;
+        solved = data.allPassed;
+    }
+
     async function askTeacher() {
         const question = pendingQuestion.trim();
         if (!question) return;
@@ -226,6 +254,9 @@
                     <button on:click={runCode} disabled={isRunning}>
                         {#if isRunning}⏳ Running...{:else}▶ Run C++{/if}
                     </button>
+                    <button on:click={checkSolution} disabled={isChecking}>
+                        {#if isChecking}ตรวจคำตอบ...{:else}✓ Check Answer{/if}
+                    </button>
                 </div>
                 <div class="editor" bind:this={editorContainer}></div>
             </div>
@@ -275,6 +306,37 @@
                             <pre>{consoleError || "ไม่มี error"}</pre>
                         </div>
                     </div>
+                    {#if checkResults.length > 0}
+                        <div class="result-panel">
+                            {#if solved}
+                                <p class="passed">
+                                    🎉 คุณทำถูกต้องทุก test case!
+                                </p>
+                            {:else}
+                                <p class="failed">❌ ยังไม่ผ่านทุก test case</p>
+                            {/if}
+
+                            <ul>
+                                {#each checkResults as r}
+                                    <li class:r.passed>
+                                        <strong>Test {r.id}</strong>
+                                        <div>Input: <code>{r.input}</code></div>
+                                        <div>
+                                            Expected: <code>{r.expected}</code>
+                                        </div>
+                                        <div>
+                                            Output: <code>{r.output}</code>
+                                        </div>
+                                        <div>
+                                            Status: {r.passed
+                                                ? "Passed"
+                                                : "Failed"}
+                                        </div>
+                                    </li>
+                                {/each}
+                            </ul>
+                        </div>
+                    {/if}
                 </div>
             {:else}
                 <!-- โหมด AI Teacher -->
@@ -682,5 +744,36 @@
     .problem-body::-webkit-scrollbar-thumb {
         background: rgba(148, 163, 184, 0.4);
         border-radius: 4px;
+    }
+
+    .result-panel {
+        margin-top: 12px;
+        padding: 12px;
+        background: rgba(15, 23, 42, 0.95);
+        border: 1px solid rgba(55, 65, 81, 0.8);
+        border-radius: 10px;
+    }
+
+    .result-panel .passed {
+        color: #4ade80;
+        font-weight: bold;
+    }
+
+    .result-panel .failed {
+        color: #f87171;
+        font-weight: bold;
+    }
+
+    li {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 8px;
+        background: rgba(30, 41, 59, 0.7);
+    }
+    li.true {
+        border-left: 4px solid #4ade80;
+    }
+    li.false {
+        border-left: 4px solid #f87171;
     }
 </style>
