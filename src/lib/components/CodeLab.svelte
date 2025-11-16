@@ -49,7 +49,7 @@
         const history = messages;
 
         try {
-            const res = await fetch("api/teacher", {
+            const res = await fetch("/c-playground/api/teacher", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -146,7 +146,7 @@
         isRunning = true;
 
         try {
-            const res = await fetch("api/run-cpp", {
+            const res = await fetch("/c-playground/api/run-cpp", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
