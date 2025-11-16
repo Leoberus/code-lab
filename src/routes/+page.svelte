@@ -1,1 +1,1 @@
-<a href="/labs">ไปหน้า Labs</a>
+<a href="labs">ไปหน้า Labs</a>

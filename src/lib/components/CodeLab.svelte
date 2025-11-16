@@ -49,7 +49,7 @@
         const history = messages;
 
         try {
-            const res = await fetch("/api/teacher", {
+            const res = await fetch("api/teacher", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -146,7 +146,7 @@
         isRunning = true;
 
         try {
-            const res = await fetch("/api/run-cpp", {
+            const res = await fetch("api/run-cpp", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -188,7 +188,7 @@
                 on:change={(e) => {
                     const slug = (e.currentTarget as HTMLSelectElement).value;
                     if (slug && slug !== problem.slug) {
-                        window.location.href = `/labs/${lab.slug}/${slug}`;
+                        window.location.href = `labs/${lab.slug}/${slug}`;
                     }
                 }}
             >
