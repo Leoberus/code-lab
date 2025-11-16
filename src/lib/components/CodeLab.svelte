@@ -216,7 +216,7 @@
                 on:change={(e) => {
                     const slug = (e.currentTarget as HTMLSelectElement).value;
                     if (slug && slug !== problem.slug) {
-                        window.location.href = `labs/${lab.slug}/${slug}`;
+                        window.location.href = `/c-playground/labs/${lab.slug}/${slug}`;
                     }
                 }}
             >

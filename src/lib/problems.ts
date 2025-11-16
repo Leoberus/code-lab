@@ -60,9 +60,9 @@ int main() {
     return 0;
 }`,
                 tests: [
-                    { id: "t1", input: "3 5", expected: "8\n" },
-                    { id: "t2", input: "10 2", expected: "12\n" },
-                    { id: "t3", input: "-5 7", expected: "2\n" }
+                    { id: "t1", input: "3 5", expected: "8" },
+                    { id: "t2", input: "10 2", expected: "12" },
+                    { id: "t3", input: "-5 7", expected: "2" }
                 ],
                 difficulty: "easy",
                 tags: ["operators", "io"]
@@ -96,9 +96,9 @@ int main() {
     return 0;
 }`,
                 tests: [
-                    { id: "t1", input: "3 4", expected: "12\n" },
-                    { id: "t2", input: "5 5", expected: "25\n" },
-                    { id: "t3", input: "10 2", expected: "20\n" }
+                    { id: "t1", input: "3 4", expected: "12" },
+                    { id: "t2", input: "5 5", expected: "25" },
+                    { id: "t3", input: "10 2", expected: "20" }
                 ],
                 difficulty: "easy",
                 tags: ["operators"]
@@ -134,9 +134,9 @@ int main() {
     return 0;
 }`,
                 tests: [
-                    { id: "t1", input: "32", expected: "0\n" },
-                    { id: "t2", input: "50", expected: "10\n" },
-                    { id: "t3", input: "68", expected: "20\n" }
+                    { id: "t1", input: "32", expected: "0" },
+                    { id: "t2", input: "50", expected: "10" },
+                    { id: "t3", input: "68", expected: "20" }
                 ],
                 difficulty: "easy",
                 tags: ["operators"]
@@ -172,9 +172,9 @@ int main() {
     return 0;
 }`,
                 tests: [
-                    { id: "t1", input: "123", expected: "3\n" },
-                    { id: "t2", input: "89", expected: "9\n" },
-                    { id: "t3", input: "0", expected: "0\n" }
+                    { id: "t1", input: "123", expected: "3" },
+                    { id: "t2", input: "89", expected: "9" },
+                    { id: "t3", input: "0", expected: "0" }
                 ],
                 difficulty: "easy",
                 tags: ["operators"]
@@ -207,9 +207,9 @@ int main() {
     return 0;
 }`,
                 tests: [
-                    { id: "t1", input: "1 2 3", expected: "2\n" },
-                    { id: "t2", input: "10 20 30", expected: "20\n" },
-                    { id: "t3", input: "10 20 31", expected: "20\n" }
+                    { id: "t1", input: "1 2 3", expected: "2" },
+                    { id: "t2", input: "10 20 30", expected: "20" },
+                    { id: "t3", input: "10 20 31", expected: "20" }
                 ],
                 difficulty: "easy",
                 tags: ["operators"]
@@ -256,9 +256,9 @@ int main() {
     return 0;
 }`,
                 tests: [
-                    { id: "t1", input: "5", expected: "positive\n" },
-                    { id: "t2", input: "-2", expected: "negative\n" },
-                    { id: "t3", input: "0", expected: "zero\n" }
+                    { id: "t1", input: "5", expected: "positive" },
+                    { id: "t2", input: "-2", expected: "negative" },
+                    { id: "t3", input: "0", expected: "zero" }
                 ],
                 difficulty: "easy",
                 tags: ["if"]
@@ -291,9 +291,9 @@ int main() {
     return 0;
 }`,
                 tests: [
-                    { id: "t1", input: "4", expected: "even\n" },
-                    { id: "t2", input: "7", expected: "odd\n" },
-                    { id: "t3", input: "0", expected: "even\n" }
+                    { id: "t1", input: "4", expected: "even" },
+                    { id: "t2", input: "7", expected: "odd" },
+                    { id: "t3", input: "0", expected: "even" }
                 ],
                 difficulty: "easy",
                 tags: ["if"]
@@ -330,9 +330,9 @@ int main() {
     return 0;
 }`,
                 tests: [
-                    { id: "t1", input: "3 7 5", expected: "7\n" },
-                    { id: "t2", input: "10 2 9", expected: "10\n" },
-                    { id: "t3", input: "5 5 3", expected: "5\n" }
+                    { id: "t1", input: "3 7 5", expected: "7" },
+                    { id: "t2", input: "10 2 9", expected: "10" },
+                    { id: "t3", input: "5 5 3", expected: "5" }
                 ],
                 difficulty: "medium",
                 tags: ["if-else", "comparison"]
@@ -372,11 +372,11 @@ int main() {
     return 0;
 }`,
                 tests: [
-                    { id: "t1", input: "85", expected: "A\n" },
-                    { id: "t2", input: "70", expected: "B\n" },
-                    { id: "t3", input: "60", expected: "C\n" },
-                    { id: "t4", input: "50", expected: "D\n" },
-                    { id: "t5", input: "42", expected: "F\n" }
+                    { id: "t1", input: "85", expected: "A" },
+                    { id: "t2", input: "70", expected: "B" },
+                    { id: "t3", input: "60", expected: "C" },
+                    { id: "t4", input: "50", expected: "D" },
+                    { id: "t5", input: "42", expected: "F" }
                 ],
                 difficulty: "medium",
                 tags: ["if-else"]
@@ -419,9 +419,9 @@ int main() {
     return 0;
 }`,
                 tests: [
-                    { id: "t1", input: "1", expected: "Monday\n" },
-                    { id: "t2", input: "5", expected: "Friday\n" },
-                    { id: "t3", input: "7", expected: "Sunday\n" }
+                    { id: "t1", input: "1", expected: "Monday" },
+                    { id: "t2", input: "5", expected: "Friday" },
+                    { id: "t3", input: "7", expected: "Sunday" }
                 ],
                 difficulty: "medium",
                 tags: ["switch", "conditions"]
