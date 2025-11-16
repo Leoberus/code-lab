@@ -1,30 +1,21 @@
-// src/lib/server/logger.ts
-import { appendFile, mkdir } from "node:fs/promises";
-import { dirname } from "node:path";
+import { env } from "$env/dynamic/private";
 
-const LOG_FILE = process.env.LOG_FILE ?? "logs/events.log";
+export async function logEvent(event: string, payload: Record<string, any>) {
+    const entry = {
+        event,
+        ts: new Date().toISOString(),
+        ...payload
+    };
 
-async function ensureLogDir() {
-    const dir = dirname(LOG_FILE);
-    await mkdir(dir, { recursive: true });
-}
+    // 1) stdout (ให้ Loki/ELK อนาคต)
+    console.log(JSON.stringify(entry));
 
-export async function logEvent(
-    type: string,
-    payload: Record<string, unknown> = {},
-) {
-    try {
-        await ensureLogDir();
+    // 2) ส่งเข้า external storage
+    fetch("https://digitech-sandbox.sut.ac.th/c-playground/api/log-intake", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(entry)
+    }).catch(() => { });
 
-        const row = {
-            ts: new Date().toISOString(),
-            type,
-            ...payload,
-        };
 
-        await appendFile(LOG_FILE, JSON.stringify(row) + "\n", "utf-8");
-    } catch (err) {
-        // อย่าให้ logging ทำให้ request ล้ม
-        console.error("logEvent error:", err);
-    }
 }

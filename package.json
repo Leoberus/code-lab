@@ -25,6 +25,7 @@
 		"vite": "^7.1.10"
 	},
 	"dependencies": {
-		"monaco-editor": "^0.54.0"
+		"monaco-editor": "^0.54.0",
+		"pg": "^8.11.3"
 	}
 }
