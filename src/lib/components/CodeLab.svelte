@@ -44,7 +44,7 @@
 
         const code = editor.getValue();
 
-        const res = await fetch("/api/check-solution", {
+        const res = await fetch("/c-playground/api/check-solution", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
