@@ -59,16 +59,34 @@
         isChecking = false;
         checkResults = data.results;
         solved = data.allPassed;
+
+        if (!solved && checkResults.length > 0) {
+            activePanel = "teacher";
+            const failed = checkResults.filter((r: any) => !r.passed).slice(0, 2);
+            const details = failed
+                .map((r: any) => `Input: ${r.input}\nExpected: ${r.expected}\nGot: ${r.output}`)
+                .join("\n---\n");
+            
+            const prompt = `โค้ดของฉันยังไม่ผ่าน test case เหล่านี้ (จากทั้งหมด ${checkResults.length} cases):\n\n${details}\n\nช่วยแนะนำหน่อยว่าผิดตรงไหน หรือควรแก้อย่างไร?`;
+            
+            await askTeacher(prompt);
+        }
     }
 
-    async function askTeacher() {
-        const question = pendingQuestion.trim();
+    async function askTeacher(customQuestion?: any) {
+        let question = "";
+        if (typeof customQuestion === "string") {
+            question = customQuestion;
+        } else {
+            question = pendingQuestion.trim();
+            pendingQuestion = "";
+        }
+
         if (!question) return;
         if (!editor) return;
 
         // push ฝั่ง student เข้าประวัติ
         messages = [...messages, { role: "student", text: question }];
-        pendingQuestion = "";
         aiThinking = true;
 
         const code = editor.getValue();

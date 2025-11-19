@@ -6,8 +6,8 @@ export async function execTestCases(code, tests) {
     for (const t of tests) {
         const result = await runCpp(code, t.input);
 
-        const normalizedOutput = result.stdout.replace(/\r/g, "");
-        const normalizedExpected = t.expected.replace(/\r/g, "");
+        const normalizedOutput = result.stdout.replace(/\r/g, "").trim();
+        const normalizedExpected = t.expected.replace(/\r/g, "").trim();
 
         const passed = normalizedOutput === normalizedExpected;
 
