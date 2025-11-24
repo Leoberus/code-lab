@@ -427,8 +427,203 @@ int main() {
                 tags: ["switch", "conditions"]
             }
         ]
+    },
+    {
+        id: "lab03",
+        slug: "lab-03-for-loops",
+        title: "Lab 03 - For Loops",
+        description: "ฝึกการใช้คำสั่งวนซ้ำ for loop พื้นฐาน (เน้นการวนรอบตามจำนวนที่กำหนด)",
+        problems: [
+            {
+                id: "lab03-p1",
+                slug: "print-1-to-n",
+                title: "Print 1 to N",
+                description: `
+เขียนโปรแกรมรับจำนวนเต็มบวก n แล้วพิมพ์ตัวเลขตั้งแต่ 1 ถึง n
+
+รูปแบบ Input:
+- บรรทัดเดียว มีจำนวนเต็มบวก n (n >= 1)
+
+รูปแบบ Output:
+- แสดงตัวเลขตั้งแต่ 1 ถึง n
+- แต่ละตัวเลขคั่นด้วยช่องว่าง 1 ช่อง (ตัวสุดท้ายไม่ต้องมีช่องว่างต่อท้ายก็ได้ หรือจะมีก็ได้ แล้วแต่สะดวก แต่ต้องมี newline ปิดท้าย)
+- หรือจะพิมพ์บรรทัดละตัวก็ได้ (แต่โจทย์มักนิยมเว้นวรรค) -> เอาเป็นเว้นวรรคละกัน
+- เพื่อความง่าย: พิมพ์ตัวเลขแล้วตามด้วยเว้นวรรคทุกตัวได้เลย หรือจะพิมพ์เว้นวรรคคั่นก็ได้
+- **ข้อกำหนดของโจทย์นี้**: ให้พิมพ์ตัวเลขแล้วตามด้วยช่องว่าง 1 ช่องทุกตัว (รวมถึงตัวสุดท้าย) แล้วขึ้นบรรทัดใหม่ 1 ครั้ง
+
+ตัวอย่าง:
+- Input: 5
+- Output: 1 2 3 4 5 
+`.trim(),
+                starterCode: `#include <iostream>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    // TODO: ใช้ for loop พิมพ์ 1 ถึง n
+    return 0;
+}`,
+                tests: [
+                    { id: "t1", input: "5", expected: "1 2 3 4 5 " },
+                    { id: "t2", input: "1", expected: "1 " },
+                    { id: "t3", input: "10", expected: "1 2 3 4 5 6 7 8 9 10 " }
+                ],
+                difficulty: "easy",
+                tags: ["loop", "for"]
+            },
+            {
+                id: "lab03-p2",
+                slug: "sum-1-to-n",
+                title: "Sum 1 to N",
+                description: `
+เขียนโปรแกรมหาผลรวมของตัวเลขตั้งแต่ 1 ถึง n
+
+รูปแบบ Input:
+- บรรทัดเดียว มีจำนวนเต็มบวก n (n >= 1)
+
+รูปแบบ Output:
+- แสดงผลรวมเป็นจำนวนเต็ม 1 ค่า
+- ตามด้วย newline 1 ครั้ง
+
+ตัวอย่าง:
+- Input: 5  → 1+2+3+4+5 = 15 → Output: 15
+- Input: 10 → Output: 55
+`.trim(),
+                starterCode: `#include <iostream>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    // TODO: ใช้ for loop หาผลรวม 1 ถึง n
+    return 0;
+}`,
+                tests: [
+                    { id: "t1", input: "5", expected: "15" },
+                    { id: "t2", input: "10", expected: "55" },
+                    { id: "t3", input: "100", expected: "5050" }
+                ],
+                difficulty: "easy",
+                tags: ["loop", "math"]
+            },
+            {
+                id: "lab03-p3",
+                slug: "multiplication-table",
+                title: "Multiplication Table",
+                description: `
+เขียนโปรแกรมพิมพ์สูตรคูณแม่ n (ตั้งแต่แม่ n x 1 ถึง n x 12)
+
+รูปแบบ Input:
+- บรรทัดเดียว มีจำนวนเต็มบวก n
+
+รูปแบบ Output:
+- แสดง 12 บรรทัด
+- แต่ละบรรทัดแสดงรูปแบบ "n x i = result"
+- โดย n คือแม่สูตรคูณ, i คือตัวคูณ (1-12), result คือผลลัพธ์
+- เว้นวรรคให้ถูกต้องตามตัวอย่าง
+
+ตัวอย่าง:
+Input: 2
+Output:
+2 x 1 = 2
+2 x 2 = 4
+...
+2 x 12 = 24
+`.trim(),
+                starterCode: `#include <iostream>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    // TODO: ใช้ for loop พิมพ์สูตรคูณแม่ n
+    return 0;
+}`,
+                tests: [
+                    {
+                        id: "t1",
+                        input: "2",
+                        expected: "2 x 1 = 2\n2 x 2 = 4\n2 x 3 = 6\n2 x 4 = 8\n2 x 5 = 10\n2 x 6 = 12\n2 x 7 = 14\n2 x 8 = 16\n2 x 9 = 18\n2 x 10 = 20\n2 x 11 = 22\n2 x 12 = 24"
+                    },
+                    {
+                        id: "t2",
+                        input: "12",
+                        expected: "12 x 1 = 12\n12 x 2 = 24\n12 x 3 = 36\n12 x 4 = 48\n12 x 5 = 60\n12 x 6 = 72\n12 x 7 = 84\n12 x 8 = 96\n12 x 9 = 108\n12 x 10 = 120\n12 x 11 = 132\n12 x 12 = 144"
+                    }
+                ],
+                difficulty: "easy",
+                tags: ["loop"]
+            },
+            {
+                id: "lab03-p4",
+                slug: "even-numbers-to-n",
+                title: "Even Numbers to N",
+                description: `
+เขียนโปรแกรมพิมพ์เลขคู่ทั้งหมดตั้งแต่ 1 ถึง n
+
+รูปแบบ Input:
+- บรรทัดเดียว มีจำนวนเต็มบวก n
+
+รูปแบบ Output:
+- แสดงเลขคู่ทุกตัวที่ <= n
+- คั่นด้วยช่องว่าง 1 ช่อง (รวมถึงตัวสุดท้าย)
+- ตามด้วย newline 1 ครั้ง
+
+ตัวอย่าง:
+- Input: 10 → Output: 2 4 6 8 10 
+- Input: 7  → Output: 2 4 6 
+`.trim(),
+                starterCode: `#include <iostream>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    // TODO: ใช้ for loop พิมพ์เลขคู่ตั้งแต่ 1 ถึง n
+    return 0;
+}`,
+                tests: [
+                    { id: "t1", input: "10", expected: "2 4 6 8 10 " },
+                    { id: "t2", input: "7", expected: "2 4 6 " },
+                    { id: "t3", input: "1", expected: "" }
+                ],
+                difficulty: "medium",
+                tags: ["loop", "if"]
+            },
+            {
+                id: "lab03-p5",
+                slug: "factorial",
+                title: "Factorial",
+                description: `
+เขียนโปรแกรมคำนวณหาค่า Factorial ของ n (n!)
+โดย n! = 1 * 2 * 3 * ... * n
+(กำหนดให้ 0! = 1)
+
+รูปแบบ Input:
+- บรรทัดเดียว มีจำนวนเต็ม n (0 <= n <= 12) 
+*หมายเหตุ: n สูงสุด 12 เพราะ 13! จะเกินค่า int
+
+รูปแบบ Output:
+- แสดงค่า n! เป็นจำนวนเต็ม 1 ค่า
+- ตามด้วย newline 1 ครั้ง
+
+ตัวอย่าง:
+- Input: 5 → Output: 120
+- Input: 0 → Output: 1
+`.trim(),
+                starterCode: `#include <iostream>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    // TODO: คำนวณ n!
+    return 0;
+}`,
+                tests: [
+                    { id: "t1", input: "5", expected: "120" },
+                    { id: "t2", input: "3", expected: "6" },
+                    { id: "t3", input: "0", expected: "1" }
+                ],
+                difficulty: "medium",
+                tags: ["loop", "math"]
+            }
+        ]
     }
-    ,
-
-
 ];
