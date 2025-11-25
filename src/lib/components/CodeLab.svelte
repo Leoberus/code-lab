@@ -3,8 +3,13 @@
     import "monaco-editor/min/vs/editor/editor.main.css";
     import type { Lab, Problem } from "$lib/problems";
 
+    import { createEventDispatcher } from "svelte";
+
     export let lab: Lab;
     export let problem: Problem;
+    export let mode: "normal" | "game" = "normal";
+
+    const dispatch = createEventDispatcher();
 
     let editorContainer: HTMLDivElement;
     let editor: any;
@@ -60,15 +65,24 @@
         checkResults = data.results;
         solved = data.allPassed;
 
+        if (solved) {
+            dispatch("success", { problemId: problem.id });
+        }
+
         if (!solved && checkResults.length > 0) {
             activePanel = "teacher";
-            const failed = checkResults.filter((r: any) => !r.passed).slice(0, 2);
+            const failed = checkResults
+                .filter((r: any) => !r.passed)
+                .slice(0, 2);
             const details = failed
-                .map((r: any) => `Input: ${r.input}\nExpected: ${r.expected}\nGot: ${r.output}`)
+                .map(
+                    (r: any) =>
+                        `Input: ${r.input}\nExpected: ${r.expected}\nGot: ${r.output}`,
+                )
                 .join("\n---\n");
-            
+
             const prompt = `โค้ดของฉันยังไม่ผ่าน test case เหล่านี้ (จากทั้งหมด ${checkResults.length} cases):\n\n${details}\n\nช่วยแนะนำหน่อยว่าผิดตรงไหน หรือควรแก้อย่างไร?`;
-            
+
             await askTeacher(prompt);
         }
     }
